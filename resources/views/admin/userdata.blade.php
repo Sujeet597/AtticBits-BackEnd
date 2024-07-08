@@ -64,8 +64,8 @@
          });
 
          function deleteUser(userId) {
-        if (confirm('Are you sure you want to delete this user?')) {
-            fetch(`{{ route('user.delete', '') }}/${userId}`, {
+            if (confirm('Are you sure you want to delete this user?')) {
+               fetch(`/user/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -74,16 +74,13 @@
             })
             .then(response => {
                 if (response.ok) {
-                    return response.json();
+                    alert('User deleted successfully.');
+                    window.location.reload();
+                } else {
+                    alert('Failed to delete user.');
                 }
-                throw new Error('Network response was not ok.');
-            })
-            .then(data => {
-                alert('User deleted successfully.');
-                window.location.reload();
             })
             .catch(error => {
-                // Handle errors
                 console.error('There was a problem with the fetch operation:', error);
                 alert('Failed to delete user.');
             });

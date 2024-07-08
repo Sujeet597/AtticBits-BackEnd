@@ -37,7 +37,6 @@
                                     @else
                                      <button class="btn btn-warning btn-sm mark-pending" data-task-id="{{ $task->id }}">Pending</button>
                                     @endif
-                                    <button class=" delete-task btn btn-danger btn-sm" data-id="{{ $task->id }}">delete</button>
                                 </li>
                             @endforeach
                         </ul>

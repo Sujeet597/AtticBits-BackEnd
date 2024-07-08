@@ -23,8 +23,12 @@ class userDataController extends Controller
 public function deleteUser($id)
 {
     $user = User::find($id);
-    $user->delete();
-    return redirect()->back()->with('success', 'user is deleted');
+    if ($user) {
+        $user->delete();
+        return redirect()->back()->with('success', 'User deleted successfully.');
+    } else {
+        return redirect()->back()->with('error', 'User not found.');
+    }
 
 }
 
