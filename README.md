@@ -8,7 +8,8 @@
 ![image](https://github.com/Sujeet597/AtticBits-BackEnd/assets/75562365/55515a97-5529-479c-b7c1-0170ac004564)
 
 # user-front
-![image](https://github.com/Sujeet597/AtticBits-BackEnd/assets/75562365/4bbdfa70-fea8-4206-ae55-a151b4f13538)
+![image](https://github.com/Sujeet597/AtticBits-BackEnd/assets/75562365/5cfda309-944e-4e76-88ec-e1390102ac78)
+
 ![image](https://github.com/Sujeet597/AtticBits-BackEnd/assets/75562365/e152913e-83f8-4f0d-a035-5fa63ac91a0e)
 
 # admin-dashboard
