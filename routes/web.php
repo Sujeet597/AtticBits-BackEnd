@@ -31,6 +31,6 @@ Route::delete('/delete-task/{id}', [TaskController::class, 'deleteTask'])->name(
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/activity-logs', [ActivityLogController::class, 'index'])->name('admin.index');
     Route::get('/user-data',[userDataController::class, 'getAlluser'])->name('admin.userdata');
-    Route::delete('/admin/user/{id}', [userDataController::class, 'deleteUser'])->name('user.delete');
+    Route::delete('/user/{id}', [userDataController::class, 'deleteUser'])->name('user.delete');
     Route::get('/tasks', [userDataController::class, 'allTask'])->name('admin.task');
 });

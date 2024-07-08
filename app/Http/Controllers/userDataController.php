@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Task;
 use Illuminate\Support\Facades\Log;
@@ -23,11 +22,10 @@ class userDataController extends Controller
 
 public function deleteUser($id)
 {
-    $user = User::findOrFail($id);
-    $user->tasks()->delete();
+    $user = User::find($id);
     $user->delete();
+    return redirect()->back()->with('success', 'user is deleted');
 
-    return redirect()->back()->with('success', 'User deleted successfully');
 }
 
 public function allTask()

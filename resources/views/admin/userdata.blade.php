@@ -33,11 +33,7 @@
                         <td>{{ $user->updated_at }}</td>
                         <td><button class="px-4 bg-success-subtle py-2 rounded-5">Edit</button></td>
                         <td>
-                            <form action="{{ route('user.delete', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="delete-btn bg-danger px-4 py-2 rounded-5">Delete</button>
-                            </form>
+                            <button type="button" class="delete-btn bg-danger px-4 py-2 rounded-5" onclick="deleteUser({{ $user->id }})">Delete</button>
                         </td>
                     </tr>
                 @endforeach
@@ -66,6 +62,33 @@
            window.location.href = '{{ route("admin.task") }}';
           });
          });
+
+         function deleteUser(userId) {
+        if (confirm('Are you sure you want to delete this user?')) {
+            fetch(`{{ route('user.delete', '') }}/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                alert('User deleted successfully.');
+                window.location.reload();
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('There was a problem with the fetch operation:', error);
+                alert('Failed to delete user.');
+            });
+        }
+    }
 
     </script>
 @endpush
