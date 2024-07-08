@@ -4,12 +4,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
-use App\Http\Middleware\ApiKeyMiddleware;
-use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\ActivityLogController;
-use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\userDataController;
-use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,6 +31,6 @@ Route::delete('/delete-task/{id}', [TaskController::class, 'deleteTask'])->name(
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/activity-logs', [ActivityLogController::class, 'index'])->name('admin.index');
     Route::get('/user-data',[userDataController::class, 'getAlluser'])->name('admin.userdata');
-    Route::post('/user/{id}', [userDataController::class, 'deleteUser'])->name('user.delete');
+    Route::delete('/admin/user/{id}', [userDataController::class, 'deleteUser'])->name('user.delete');
     Route::get('/tasks', [userDataController::class, 'allTask'])->name('admin.task');
 });
